@@ -4,9 +4,9 @@
   --clay-red: #b74a2a;
   --cactus-green: #2a9d8f;
   --sky-blue: #264653;
-  --text-dark: #3b1f0d;
-  --text-light: #fff;
-  --focus-glow: rgba(42, 157, 143, 0.4);
+  --text-dark: #2e1e12;
+  --text-light: #ffffff;
+  --focus-glow: rgba(42, 157, 143, 0.5);
 }
 
 * {
@@ -15,20 +15,21 @@
   padding: 0;
 }
 
-body, html {
+html, body {
   width: 100%;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: system-ui, sans-serif;
   background-color: var(--desert-sand);
   color: var(--text-dark);
+  font-size: 20px; /* MUCH larger than default */
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 16px;
-  gap: 12px;
+  padding: 20px;
+  gap: 16px;
   opacity: 0;
   animation: fadeInBody 0.6s ease forwards;
 }
@@ -41,29 +42,27 @@ header {
   width: 100%;
   background-color: var(--cactus-green);
   color: var(--text-light);
-  padding: 20px 16px;
+  padding: 24px 20px;
   text-align: center;
-  font-size: 1.6em;
+  font-size: 2rem;
   font-weight: bold;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
 }
 
 main {
   flex: 1;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 12px;
+  gap: 20px;
+  margin-top: 8px;
 }
 
 section {
   background-color: #fff;
-  width: 100%;
-  padding: 20px 16px;
+  padding: 24px 20px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   animation: fadeUp 0.5s ease forwards;
   opacity: 0;
   transform: translateY(10px);
@@ -79,28 +78,28 @@ section {
 
 h1, h2 {
   color: var(--clay-red);
-  font-size: 1.5em;
-  margin-bottom: 12px;
+  font-size: 1.6em;
+  margin-bottom: 16px;
 }
 
-p {
+p, label {
   line-height: 1.6;
-  margin-bottom: 12px;
-  font-size: 1.05em;
+  font-size: 1.1em;
+  margin-bottom: 16px;
 }
 
 button {
   background-color: var(--cactus-green);
   color: var(--text-light);
   border: none;
-  padding: 16px;
+  padding: 18px;
   border-radius: 14px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1.2em;
   width: 100%;
-  margin-top: 12px;
+  margin-top: 16px;
   transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
 button:hover {
@@ -114,11 +113,9 @@ button:active {
 a {
   text-decoration: none;
   color: var(--cactus-green);
-  display: block;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 24px;
   font-size: 1.1em;
-  transition: color 0.3s;
 }
 
 a:hover {
@@ -127,25 +124,25 @@ a:hover {
 
 input, select {
   width: 100%;
-  padding: 14px;
-  border: 1px solid var(--cactus-green);
+  padding: 16px;
+  border: 2px solid var(--cactus-green);
   border-radius: 12px;
   margin-top: 8px;
-  font-size: 1.05em;
+  font-size: 1.1em;
   transition: box-shadow 0.3s;
 }
 
 input:focus, select:focus {
   outline: none;
-  box-shadow: 0 0 6px var(--focus-glow);
+  box-shadow: 0 0 8px var(--focus-glow);
 }
 
 .reward-card {
   background-color: var(--sky-blue);
   color: var(--text-light);
-  padding: 20px 16px;
+  padding: 24px 20px;
   border-radius: 20px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   transition: transform 0.2s;
 }
 
@@ -154,21 +151,21 @@ input:focus, select:focus {
 }
 
 .reward-card h3 {
-  margin-bottom: 8px;
+  font-size: 1.4em;
   color: var(--sunset-orange);
-  font-size: 1.3em;
+  margin-bottom: 12px;
 }
 
 .reward-card p {
+  font-size: 1.1em;
   margin-bottom: 12px;
-  font-size: 1.05em;
 }
 
 footer {
   background-color: var(--sky-blue);
   color: var(--text-light);
   text-align: center;
-  padding: 14px;
+  padding: 18px;
   font-size: 1em;
   border-radius: 16px;
   margin-top: 20px;

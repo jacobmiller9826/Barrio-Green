@@ -1,0 +1,130 @@
+:root {
+  --desert-sand: #f4e2d8;
+  --sunset-orange: #e76f51;
+  --clay-red: #b74a2a;
+  --cactus-green: #2a9d8f;
+  --sky-blue: #264653;
+  --text-dark: #3b1f0d;
+  --text-light: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--desert-sand);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: var(--clay-red);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+button {
+  background-color: var(--cactus-green);
+  color: var(--text-light);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: var(--sunset-orange);
+  transform: scale(1.02);
+}
+
+a {
+  text-decoration: none;
+  color: var(--cactus-green);
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--cactus-green);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reward-card {
+  background-color: var(--sky-blue);
+  color: var(--text-light);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.reward-card:hover {
+  transform: scale(1.02);
+}
+
+.reward-card h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: var(--sunset-orange);
+}
+
+.reward-card p {
+  margin: 0 0 10px 0;
+}
+
+.reward-card button {
+  align-self: center;
+}
+
+#userBalance, #userAddress {
+  font-weight: bold;
+  color: var(--cactus-green);
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+}

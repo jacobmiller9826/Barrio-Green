@@ -11,36 +11,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const client = createThirdwebClient({ clientId });
   const wallet = createLocalWallet();
 
-  const dashboardSection = document.getElementById("dashboard-section");
-  const rewardsSection = document.getElementById("rewards-section");
-  const adminSection = document.getElementById("admin-section");
-
-  const navDashboard = document.getElementById("nav-dashboard");
-  const navRewards = document.getElementById("nav-rewards");
-  const navAdmin = document.getElementById("nav-admin");
+  let currentLang = "EN";
 
   const userAddress = document.getElementById("user-address");
   const balanceDisplay = document.getElementById("balance");
-
-  const mintAddressInput = document.getElementById("mint-address");
-  const mintAmountInput = document.getElementById("mint-amount");
-  const mintButton = document.getElementById("mint-button");
-  const mintStatus = document.getElementById("mint-status");
-
   const langToggle = document.getElementById("lang-toggle");
   const modeToggle = document.getElementById("mode-toggle");
-
-  let currentLang = "EN";
+  const mintButton = document.getElementById("mint-button");
 
   async function init() {
     await wallet.connect();
     const address = await wallet.getAddress();
-    userAddress.textContent = address;
+    if (userAddress) userAddress.textContent = address;
     await fetchBalance();
   }
 
   async function fetchBalance() {
     try {
+      if (!balanceDisplay) return;
       balanceDisplay.textContent = "Loading...";
       const contract = await getContract({ client, address: contractAddress, chain });
       const address = await wallet.getAddress();
@@ -48,11 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
       balanceDisplay.textContent = `${balance.displayValue} TUC`;
     } catch (err) {
       console.error(err);
-      balanceDisplay.textContent = "Error loading balance.";
+      if (balanceDisplay) balanceDisplay.textContent = "Error loading balance.";
     }
   }
 
   async function mintTokens() {
+    const mintAddressInput = document.getElementById("mint-address");
+    const mintAmountInput = document.getElementById("mint-amount");
+    const mintStatus = document.getElementById("mint-status");
     try {
       mintStatus.textContent = currentLang === "EN" ? "Minting..." : "Generando...";
       const contract = await getContract({ client, address: contractAddress, chain });
@@ -62,11 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(err);
       mintStatus.textContent = currentLang === "EN" ? "Error minting." : "Error al generar.";
     }
-  }
-
-  function showSection(section) {
-    [dashboardSection, rewardsSection, adminSection].forEach(s => s.classList.add("hidden"));
-    section.classList.remove("hidden");
   }
 
   function toggleLanguage() {
@@ -80,12 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("dark");
   }
 
-  navDashboard.addEventListener("click", () => showSection(dashboardSection));
-  navRewards.addEventListener("click", () => showSection(rewardsSection));
-  navAdmin.addEventListener("click", () => showSection(adminSection));
-  mintButton.addEventListener("click", mintTokens);
-  langToggle.addEventListener("click", toggleLanguage);
-  modeToggle.addEventListener("click", toggleMode);
+  if (mintButton) mintButton.addEventListener("click", mintTokens);
+  if (langToggle) langToggle.addEventListener("click", toggleLanguage);
+  if (modeToggle) modeToggle.addEventListener("click", toggleMode);
 
   init();
 });

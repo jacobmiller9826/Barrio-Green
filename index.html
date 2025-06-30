@@ -2,22 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Barrio Green – Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barrio Green – Rewards App</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <header>🌵 Barrio Green</header>
-  <main>
-    <section>
-      <h1>Welcome to Barrio Green</h1>
-      <p>Turn your recycling and solar participation into rewards for your favorite Arizona sports teams. Help keep Tucson beautiful while earning local perks!</p>
-      <button onclick="location.href='dashboard.html'">Get Started</button>
-    </section>
-  </main>
-  <footer>
-    Barrio Green – Built for Tucson
-  </footer>
-  <script src="app.js"></script>
+  <div class="app-container">
+    <header>
+      <h1>Barrio Green</h1>
+      <p>Arizona Community Rewards</p>
+    </header>
+
+    <main id="main">
+      <div id="login-section" class="card">
+        <h2>Login</h2>
+        <input type="email" id="email-input" placeholder="Enter your email" />
+        <button id="login-button">Login with Email</button>
+      </div>
+
+      <div id="dashboard-section" class="hidden">
+        <div class="card">
+          <h2>Welcome 👋</h2>
+          <p id="user-address"></p>
+        </div>
+
+        <div class="card">
+          <h3>Your TUC Balance</h3>
+          <p id="balance">Loading...</p>
+        </div>
+
+        <button id="logout-button" class="logout-btn">Logout</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>Made for Tucson 🌵 Barrio Green 2025</p>
+    </footer>
+  </div>
+
+  <script src="app.js" type="module"></script>
 </body>
 </html>

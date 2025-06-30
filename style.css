@@ -9,94 +9,102 @@
   --focus-glow: rgba(42, 157, 143, 0.4);
 }
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--desert-sand);
   color: var(--text-dark);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 16px;
+  gap: 12px;
   opacity: 0;
-  animation: fadeInBody 0.8s ease forwards;
+  animation: fadeInBody 0.6s ease forwards;
 }
 
 @keyframes fadeInBody {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 header {
+  width: 100%;
   background-color: var(--cactus-green);
   color: var(--text-light);
-  padding: 16px;
+  padding: 20px 16px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-weight: bold;
-  animation: slideDown 0.6s ease forwards;
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 main {
+  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  gap: 16px;
+  margin-top: 12px;
 }
 
 section {
   background-color: #fff;
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  padding: 20px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   animation: fadeUp 0.5s ease forwards;
   opacity: 0;
+  transform: translateY(10px);
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeUp {
   to {
-    transform: translateY(0);
     opacity: 1;
-  }
-  from {
-    transform: translateY(20px);
-    opacity: 0;
+    transform: translateY(0);
   }
 }
 
 h1, h2 {
   color: var(--clay-red);
-  margin-top: 0;
+  font-size: 1.5em;
+  margin-bottom: 12px;
 }
 
 p {
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-size: 1.05em;
 }
 
 button {
   background-color: var(--cactus-green);
   color: var(--text-light);
   border: none;
-  padding: 14px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 14px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1em;
   width: 100%;
   margin-top: 12px;
   transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 button:hover {
   background-color: var(--sunset-orange);
-  transform: scale(1.02);
 }
 
 button:active {
@@ -109,6 +117,7 @@ a {
   display: block;
   text-align: center;
   margin-top: 20px;
+  font-size: 1.1em;
   transition: color 0.3s;
 }
 
@@ -118,50 +127,50 @@ a:hover {
 
 input, select {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: 1px solid var(--cactus-green);
-  border-radius: 8px;
+  border-radius: 12px;
   margin-top: 8px;
-  font-size: 1rem;
+  font-size: 1.05em;
   transition: box-shadow 0.3s;
 }
 
 input:focus, select:focus {
   outline: none;
-  box-shadow: 0 0 5px var(--focus-glow);
+  box-shadow: 0 0 6px var(--focus-glow);
 }
 
 .reward-card {
   background-color: var(--sky-blue);
   color: var(--text-light);
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s, box-shadow 0.3s;
+  padding: 20px 16px;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
 }
 
 .reward-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transform: scale(1.01);
 }
 
 .reward-card h3 {
-  margin-top: 0;
   margin-bottom: 8px;
   color: var(--sunset-orange);
+  font-size: 1.3em;
 }
 
 .reward-card p {
-  margin: 0 0 12px 0;
+  margin-bottom: 12px;
+  font-size: 1.05em;
 }
 
 footer {
   background-color: var(--sky-blue);
   color: var(--text-light);
   text-align: center;
-  padding: 12px;
-  font-size: 0.9em;
-  position: sticky;
-  bottom: 0;
+  padding: 14px;
+  font-size: 1em;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }

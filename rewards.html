@@ -1,58 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Barrio Green – Rewards</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <div class="app-container">
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
+      <div class="header-controls">
+        <button id="lang-toggle" class="circle-btn" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" class="circle-btn" aria-label="Toggle Dark Mode">🌙</button>
+      </div>
     </header>
 
     <nav class="nav-bar">
       <a href="index.html" class="nav-button">Home</a>
       <a href="dashboard.html" class="nav-button">Dashboard</a>
-      <a href="rewards.html" class="nav-button disabled">Rewards</a>
+      <a href="rewards.html" class="nav-button nav-active">Rewards</a>
       <a href="exchange.html" class="nav-button">Exchange</a>
       <a href="admin.html" class="nav-button">Admin</a>
       <a href="help.html" class="nav-button">Help</a>
     </nav>
 
-    <main>
-      <div class="card">
-        <h2>Rewards Catalog</h2>
-        <div id="rewards-list">
-          <div class="reward-item">
-            <h3>Baseball Tickets</h3>
-            <p>Cost: 50 TUC</p>
-            <button class="redeem-btn">Redeem</button>
-          </div>
-          <div class="reward-item">
-            <h3>Farmers Market Discount</h3>
-            <p>Cost: 30 TUC</p>
-            <button class="redeem-btn">Redeem</button>
-          </div>
+    <main id="content">
+      <section class="card">
+        <h2 id="rewards-title">Rewards Catalog</h2>
+        <div class="reward-item">
+          <h3>Baseball Tickets</h3>
+          <p>Cost: 50 TUC</p>
+          <button class="redeem-btn nav-button">Redeem</button>
         </div>
-      </div>
+        <div class="reward-item">
+          <h3>Farmers Market Discount</h3>
+          <p>Cost: 30 TUC</p>
+          <button class="redeem-btn nav-button">Redeem</button>
+        </div>
+      </section>
     </main>
 
     <footer>
-      <button id="lang-toggle" class="footer-button">ES</button>
-      <button id="mode-toggle" class="footer-button">🌙</button>
+      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <p id="modal-message"></p>
-      <button id="modal-close">Close</button>
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-message">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close" class="nav-button">Close</button>
+      </div>
     </div>
-  </div>
 
-  <script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
+  </div>
 </body>
 </html>

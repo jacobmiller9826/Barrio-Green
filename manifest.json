@@ -1,0 +1,20 @@
+{
+  "name": "Barrio Green",
+  "short_name": "BarrioGreen",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4e2d8",
+  "theme_color": "#2a9d8f",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

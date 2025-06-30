@@ -12,8 +12,8 @@
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
       <div class="header-controls">
-        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
-        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+        <button id="lang-toggle">ES</button>
+        <button id="mode-toggle">🌙</button>
       </div>
     </header>
 
@@ -24,19 +24,18 @@
       <a href="admin.html"><button>Admin</button></a>
     </nav>
 
-    <section class="card" role="region" aria-labelledby="rewards-title">
-      <h2 id="rewards-title">Rewards Catalog</h2>
-      <div class="reward-item card" style="margin-bottom: 1rem;">
+    <section class="card">
+      <h2>Rewards Catalog</h2>
+      <div class="reward-item card">
         <h3>Baseball Tickets</h3>
         <p>Cost: 50 TUC</p>
         <button class="redeem-btn" data-cost="50">Redeem</button>
       </div>
-      <div class="reward-item card" style="margin-bottom: 1rem;">
+      <div class="reward-item card">
         <h3>Farmers Market Discount</h3>
         <p>Cost: 30 TUC</p>
         <button class="redeem-btn" data-cost="30">Redeem</button>
       </div>
-      <p id="redeem-status" aria-live="polite" style="font-weight: bold;"></p>
     </section>
 
     <footer>
@@ -44,42 +43,11 @@
     </footer>
   </div>
   <script type="module" src="app.js"></script>
-  <script>
-    // Redeem logic:
-    import { createThirdwebClient, getContract, defineChain } from "https://esm.sh/@thirdweb-dev/sdk@0.16.1/evm";
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const clientId = "05a0325af41e925b0e2ff52a16efa407";
-      const contractAddress = "0xC52a002023ABA42B4490f625Df6434fc26E425c8";
-      const chain = defineChain("sepolia");
-      const client = createThirdwebClient({ clientId });
-
-      const redeemStatus = document.getElementById("redeem-status");
-
-      async function redeemTokens(cost) {
-        try {
-          redeemStatus.textContent = "Redeeming...";
-          const contract = await getContract({ client, address: contractAddress, chain });
-          const wallet = createLocalWallet();
-          await wallet.connect();
-          const address = await wallet.getAddress();
-
-          // Burn tokens to simulate redemption
-          await contract.erc20.burnFrom(address, cost.toString());
-          redeemStatus.textContent = `Redeemed reward for ${cost} TUC!`;
-        } catch (err) {
-          console.error(err);
-          redeemStatus.textContent = "Error redeeming reward.";
-        }
-      }
-
-      document.querySelectorAll(".redeem-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const cost = btn.getAttribute("data-cost");
-          redeemTokens(cost);
-        });
-      });
-    });
-  </script>
+  <div id="modal">
+    <div id="modal-content">
+      <p id="modal-message">This is a message</p>
+      <button id="modal-close">OK</button>
+    </div>
+  </div>
 </body>
 </html>

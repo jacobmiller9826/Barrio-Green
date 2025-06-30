@@ -4,29 +4,36 @@
   <meta charset="UTF-8" />
   <title>Barrio Green – Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <header>🌵 Barrio Green Dashboard</header>
+  <header>🌵 Dashboard</header>
   <main>
     <section>
-      <p><strong>Wallet:</strong> <span id="userAddress">Loading...</span></p>
-      <p><strong>Balance:</strong> <span id="userBalance">Loading...</span> TUC</p>
+      <p><strong>Wallet:</strong> <span id="userAddress">Not connected</span></p>
+      <p><strong>Balance:</strong> <span id="userBalance">0</span> TUC</p>
+      <button id="connectWallet">🔗 Connect Wallet</button>
     </section>
     <section>
       <h2>📋 Log Activity</h2>
       <form id="logForm">
         <label>Type:</label>
         <select id="logType">
-          <option value="recycling">♻️ Recycling (lbs of plastic)</option>
+          <option value="recycling">♻️ Recycling (lbs)</option>
           <option value="solar">☀️ Solar Credits (kWh)</option>
         </select>
         <label>Amount:</label>
         <input type="number" id="logAmount" placeholder="Amount" required />
         <button type="submit">Submit Log</button>
       </form>
-      <a href="rewards.html">🎁 View Rewards</a>
     </section>
   </main>
+  <nav>
+    <button onclick="location.href='dashboard.html'">🏠 Home</button>
+    <button onclick="location.href='rewards.html'">🎁 Rewards</button>
+    <button onclick="location.href='help.html'">❓ Help</button>
+    <button id="settingsButton">⚙️ Settings</button>
+  </nav>
   <footer>
     Barrio Green – Built for Tucson
   </footer>

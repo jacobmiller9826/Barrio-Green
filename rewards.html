@@ -4,18 +4,24 @@
   <meta charset="UTF-8" />
   <title>Barrio Green – Rewards</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <header>🎟️ Barrio Green Rewards</header>
+  <header>🎁 Rewards</header>
   <main>
     <section>
-      <p>Wallet Balance: <span id="userBalance">Loading...</span> TUC</p>
+      <p>Wallet Balance: <span id="userBalance">0</span> TUC</p>
     </section>
     <section>
       <ul id="rewardsList"></ul>
-      <a href="dashboard.html">⬅️ Back to Dashboard</a>
     </section>
   </main>
+  <nav>
+    <button onclick="location.href='dashboard.html'">🏠 Home</button>
+    <button onclick="location.href='rewards.html'">🎁 Rewards</button>
+    <button onclick="location.href='help.html'">❓ Help</button>
+    <button id="settingsButton">⚙️ Settings</button>
+  </nav>
   <footer>
     Barrio Green – Built for Tucson
   </footer>

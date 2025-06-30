@@ -11,39 +11,41 @@
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
-      <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
-      </div>
     </header>
 
-    <nav>
-      <a href="dashboard.html"><button disabled style="opacity: 0.6; cursor: default;">Dashboard</button></a>
-      <a href="exchange.html"><button>Exchange Credits</button></a>
-      <a href="rewards.html"><button>Rewards</button></a>
-      <a href="admin.html"><button>Admin</button></a>
+    <nav class="nav-bar">
+      <a href="index.html" class="nav-button">Home</a>
+      <a href="dashboard.html" class="nav-button disabled">Dashboard</a>
+      <a href="rewards.html" class="nav-button">Rewards</a>
+      <a href="exchange.html" class="nav-button">Exchange</a>
+      <a href="admin.html" class="nav-button">Admin</a>
+      <a href="help.html" class="nav-button">Help</a>
     </nav>
 
-    <section class="card">
-      <h2>Your Wallet</h2>
-      <p><strong>Address:</strong> <span id="user-address">Connecting...</span></p>
-    </section>
-
-    <section class="card">
-      <h2>TUC Token Balance</h2>
-      <p id="balance">Loading...</p>
-    </section>
+    <main>
+      <div class="card">
+        <h2>Your Wallet</h2>
+        <p class="address" id="user-address">Loading...</p>
+      </div>
+      <div class="card">
+        <h3>Your TUC Balance</h3>
+        <p id="balance">Loading...</p>
+      </div>
+    </main>
 
     <footer>
-      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
+      <button id="lang-toggle" class="footer-button">ES</button>
+      <button id="mode-toggle" class="footer-button">🌙</button>
     </footer>
   </div>
-  <script type="module" src="app.js"></script>
-  <div id="modal">
-    <div id="modal-content">
-      <p id="modal-message">This is a message</p>
-      <button id="modal-close">OK</button>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button id="modal-close">Close</button>
     </div>
   </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

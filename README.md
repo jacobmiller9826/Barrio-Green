@@ -1,72 +1,71 @@
-# Barrio Green – Arizona Community Rewards DApp
+# 🌵 Barrio Green – Arizona Community Rewards DApp
 
-Barrio Green is a simple, beautiful, and intuitive decentralized app (DApp) built to reward Tucson community members with tokenized incentives for solar and recycling participation. The app connects to a smart contract deployed on the Sepolia testnet, managing TUC tokens.
-
----
-
-## Features
-
-- **Auto-generated wallet:** No login or email required. Wallet is created locally in your browser.
-- **Dashboard:** Displays your connected wallet address and your current TUC token balance.
-- **Rewards Catalog:** Browse community rewards such as baseball tickets and farmers market discounts redeemable with TUC tokens.
-- **Admin Mint Page:** For authorized users to mint new TUC tokens to any Ethereum address. This enables token distribution to community members or testers.
-- **Language Toggle:** Switch between English and Spanish.
-- **Dark Mode:** Switch between light and dark themes for easier viewing.
-- **Mobile-friendly:** Designed with large text, rounded boxes, and Arizona-inspired colors for clarity and accessibility.
+**Barrio Green** is a decentralized, mobile-friendly community rewards app designed to promote sustainable actions like **plastic recycling** and **solar energy adoption**. It tokenizes community participation using blockchain-inspired credits (**TUC**) that residents can exchange or redeem for local rewards like **Arizona sports tickets** and **farmers market discounts**.
 
 ---
 
-## How to Use
+## 🔥 Features
 
-1. Open the app in a modern browser.
-2. The app auto-generates a local wallet for you.
-3. View your wallet address and TUC balance on the dashboard.
-4. Navigate to the Rewards page to see available rewards.
-5. (Admins only) Use the Admin Mint page to mint TUC tokens to users.
-6. Use the language and dark mode toggles in the header for personalization.
-
----
-
-## Admin Mint Page Details
-
-- The admin page allows minting new tokens by entering a recipient wallet address and the amount of TUC tokens.
-- Only wallets with minting permissions on the deployed contract can successfully mint tokens.
-- This page should be secured or restricted in a production environment to prevent unauthorized minting.
+- 🪙 Simulated blockchain wallet with TUC token balance
+- 🎁 Rewards Catalog – redeem credits for rewards (with confirmation pop-ups)
+- ♻️ Exchange Credits – simulate exchanging solar/plastic credits
+- ⚙️ Admin Tools – mint tokens (simulated)
+- 🌙 Dark Mode toggle
+- 🌐 Language toggle (EN/ES)
+- 📱 Mobile-first design with large, rounded buttons (elder-friendly)
+- 🪟 Modal-based pop-up feedback on all actions
+- 🧭 Fully responsive layout with horizontal navigation bar
+- 🌵 Diamondbacks throwback color theme
+- 💾 Offline-ready PWA with service worker caching
 
 ---
 
-## Technical Details
+## 🚀 How It Works
 
-- **Smart Contract Network:** Sepolia testnet
-- **Smart Contract Address:** `0xC52a002023ABA42B4490f625Df6434fc26E425c8`
-- **Blockchain SDK:** Thirdweb JavaScript SDK and Embedded Wallet
-- **Frontend:** HTML, CSS, and JavaScript, hosted on GitHub Pages
-
----
-
-## Setup and Deployment
-
-1. Clone or download this repository.
-2. Host the files on GitHub Pages or any static hosting provider.
-3. Ensure you have access to the smart contract on Sepolia and proper permissions if you intend to mint tokens.
-4. Open the app in a browser to start using.
+1️⃣ User connects their (simulated) wallet on the dashboard page  
+2️⃣ Earns TUC tokens via solar or plastic recycling (minted by admin)  
+3️⃣ Exchanges credits or redeems rewards in-app  
+4️⃣ All actions show confirmation pop-up modals for clear UX
 
 ---
 
-## Future Improvements
+## 🎯 Use Cases
 
-- Secure admin page with authentication.
-- Implement on-chain rewards redemption logic.
-- Add more rewards and dynamic catalog loading.
-- Integrate notifications or email alerts for users.
-- Support mainnet deployment and real token economics.
-
----
-
-## License
-
-This project is open source and available under the MIT License.
+- Local governments incentivizing sustainable practices
+- Recycling companies like **ByFusion** issuing tokenized rewards
+- Utilities rewarding solar customers with blockchain credits
+- Community groups promoting environmental action
 
 ---
 
-Made with ❤️ for Tucson and Arizona communities 🌵  
+## 📦 Tech Stack
+
+- HTML / CSS / JavaScript (100% front-end, GitHub Pages-friendly)
+- Simulated blockchain wallet logic
+- Fully offline-capable (PWA with service worker)
+- Designed for future integration with **Thirdweb** or other blockchain SDKs
+
+---
+
+## 💡 Status
+
+✅ Fully demoable prototype  
+✅ Multi-page mobile-friendly UI  
+✅ Large text and accessible design for older users  
+✅ Simulated wallet, exchange, redemption, and minting  
+✅ Language support (EN/ES)  
+✅ Dark mode toggle  
+🔜 Ready for real blockchain integration and production polish  
+🔜 Ready to be pitched as a pilot to local governments or partners like ByFusion
+
+---
+
+## ⚖️ License
+
+MIT License – Free to use, adapt, and improve. Attribution appreciated.
+
+---
+
+## ✨ 
+
+Made in Tucson with ❤️ by **MILLER BUSINESS MACHINES**

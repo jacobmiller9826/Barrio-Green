@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Barrio Green – Home</title>
+  <title>Barrio Green – Arizona Community Rewards</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,38 +11,41 @@
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
+      <div class="header-controls">
+        <button id="lang-toggle" class="circle-btn" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" class="circle-btn" aria-label="Toggle Dark Mode">🌙</button>
+      </div>
     </header>
 
     <nav class="nav-bar">
-      <a href="index.html" class="nav-button disabled">Home</a>
-      <a href="dashboard.html" class="nav-button">Dashboard</a>
-      <a href="rewards.html" class="nav-button">Rewards</a>
-      <a href="exchange.html" class="nav-button">Exchange</a>
-      <a href="admin.html" class="nav-button">Admin</a>
-      <a href="help.html" class="nav-button">Help</a>
+      <button id="nav-dashboard" class="nav-button">Dashboard</button>
+      <button id="nav-rewards" class="nav-button">Rewards</button>
+      <button id="nav-exchange" class="nav-button">Exchange</button>
+      <button id="nav-admin" class="nav-button">Admin</button>
+      <button id="nav-help" class="nav-button">Help</button>
     </nav>
 
-    <main>
-      <div class="card">
-        <h2>Welcome to Barrio Green 👋</h2>
-        <p>This app rewards Arizona communities for recycling and solar participation. Connect your wallet to start!</p>
-        <a class="nav-button" href="dashboard.html">Go to Dashboard</a>
-      </div>
+    <main id="content">
+      <!-- Content will load dynamically -->
+      <section id="welcome-section" class="card">
+        <h2>Welcome to Barrio Green</h2>
+        <p>Use the navigation above to explore the app.</p>
+      </section>
     </main>
 
     <footer>
-      <button id="lang-toggle" class="footer-button">ES</button>
-      <button id="mode-toggle" class="footer-button">🌙</button>
+      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <p id="modal-message"></p>
-      <button id="modal-close">Close</button>
+    <!-- Modal -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-message">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close" class="nav-button">Close</button>
+      </div>
     </div>
-  </div>
 
-  <script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
+  </div>
 </body>
 </html>

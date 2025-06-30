@@ -12,23 +12,36 @@
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
       <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
+        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
       </div>
     </header>
 
     <nav>
-      <a href="index.html"><button>Dashboard</button></a>
+      <a href="dashboard.html"><button>Dashboard</button></a>
+      <a href="exchange.html"><button>Exchange Credits</button></a>
       <a href="rewards.html"><button>Rewards</button></a>
-      <a href="admin.html"><button>Admin</button></a>
+      <a href="admin.html"><button disabled style="opacity: 0.6; cursor: default;">Admin</button></a>
     </nav>
 
-    <section class="card">
-      <h2>Admin Mint Tokens</h2>
-      <input type="text" id="mint-address" placeholder="Recipient Address" />
-      <input type="number" id="mint-amount" placeholder="Amount" />
+    <section class="card" role="region" aria-labelledby="admin-title">
+      <h2 id="admin-title">Admin Mint Tokens</h2>
+      <input
+        type="text"
+        id="mint-address"
+        placeholder="Recipient Address"
+        aria-label="Recipient wallet address"
+      />
+      <input
+        type="number"
+        id="mint-amount"
+        placeholder="Amount to Mint"
+        aria-label="Amount to mint"
+        min="0"
+        step="1"
+      />
       <button id="mint-button">Mint Tokens</button>
-      <p id="mint-status"></p>
+      <p id="mint-status" aria-live="polite"></p>
     </section>
 
     <footer>

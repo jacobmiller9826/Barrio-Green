@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Barrio Green – Welcome</title>
+  <title>Barrio Green – Rewards App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,40 +11,65 @@
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
-      <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
-      </div>
     </header>
 
-    <nav>
-      <a href="dashboard.html"><button>Dashboard</button></a>
-      <a href="exchange.html"><button>Exchange Credits</button></a>
-      <a href="rewards.html"><button>Rewards</button></a>
-      <a href="admin.html"><button>Admin</button></a>
+    <nav class="nav-bar">
+      <button id="nav-dashboard" class="nav-button">Dashboard</button>
+      <button id="nav-rewards" class="nav-button">Rewards</button>
+      <button id="nav-admin" class="nav-button">Admin</button>
     </nav>
 
-    <section class="card">
-      <h2>Welcome to Barrio Green 🌵</h2>
-      <p>Earn TUC tokens by recycling plastic and solar credits. Redeem them for Arizona rewards!</p>
-    </section>
+    <main>
+      <section id="dashboard-section" class="card">
+        <h2>Welcome 👋</h2>
+        <p class="address" id="user-address">Not connected</p>
 
-    <section class="card">
-      <h3>Get Started</h3>
-      <p>Connect your wallet to start earning.</p>
-      <a href="dashboard.html"><button>Go to Dashboard</button></a>
-    </section>
+        <div class="balance-container card">
+          <h3>Your TUC Balance</h3>
+          <p id="balance">Loading...</p>
+        </div>
+      </section>
+
+      <section id="rewards-section" class="card hidden">
+        <h2>Rewards Catalog</h2>
+        <div id="rewards-list">
+          <div class="reward-item card">
+            <h3>Baseball Tickets</h3>
+            <p>Cost: 50 TUC</p>
+            <button class="redeem-btn">Redeem</button>
+          </div>
+          <div class="reward-item card">
+            <h3>Farmers Market Discount</h3>
+            <p>Cost: 30 TUC</p>
+            <button class="redeem-btn">Redeem</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-section" class="card hidden">
+        <h2>Admin Mint Tokens</h2>
+        <input type="text" id="mint-address" placeholder="Recipient Address" />
+        <input type="number" id="mint-amount" placeholder="Amount to Mint" />
+        <button id="mint-button">Mint Tokens</button>
+        <p id="mint-status"></p>
+      </section>
+    </main>
 
     <footer>
+      <button id="lang-toggle" class="footer-button">ES</button>
+      <button id="mode-toggle" class="footer-button">🌙</button>
       <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
-  <script type="module" src="app.js"></script>
-  <div id="modal">
-    <div id="modal-content">
-      <p id="modal-message">This is a message</p>
-      <button id="modal-close">OK</button>
+
+    <!-- Modal for messages -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close">Close</button>
+      </div>
     </div>
+
+    <script type="module" src="app.js"></script>
   </div>
 </body>
 </html>

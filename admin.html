@@ -11,36 +11,39 @@
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
-      <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
-      </div>
     </header>
 
-    <nav>
-      <a href="dashboard.html"><button>Dashboard</button></a>
-      <a href="exchange.html"><button>Exchange Credits</button></a>
-      <a href="rewards.html"><button>Rewards</button></a>
-      <a href="admin.html"><button disabled style="opacity: 0.6; cursor: default;">Admin</button></a>
+    <nav class="nav-bar">
+      <button id="nav-dashboard" class="nav-button" onclick="location.href='index.html'">Dashboard</button>
+      <button id="nav-rewards" class="nav-button" onclick="location.href='rewards.html'">Rewards</button>
+      <button id="nav-admin" class="nav-button" disabled>Admin</button>
     </nav>
 
-    <section class="card">
-      <h2>Admin Mint Tokens</h2>
-      <input type="text" id="mint-address" placeholder="Recipient Address" />
-      <input type="number" id="mint-amount" placeholder="Amount to Mint" min="0" step="1" />
-      <button id="mint-button">Mint Tokens</button>
-    </section>
+    <main>
+      <section id="admin-section" class="card">
+        <h2>Admin Mint Tokens</h2>
+        <input type="text" id="mint-address" placeholder="Recipient Address" />
+        <input type="number" id="mint-amount" placeholder="Amount to Mint" />
+        <button id="mint-button">Mint Tokens</button>
+        <p id="mint-status"></p>
+      </section>
+    </main>
 
     <footer>
+      <button id="lang-toggle" class="footer-button">ES</button>
+      <button id="mode-toggle" class="footer-button">🌙</button>
       <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
-  <script type="module" src="app.js"></script>
-  <div id="modal">
-    <div id="modal-content">
-      <p id="modal-message">This is a message</p>
-      <button id="modal-close">OK</button>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close">Close</button>
+      </div>
     </div>
+
+    <script type="module" src="app.js"></script>
   </div>
 </body>
 </html>

@@ -12,8 +12,8 @@
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
       <div class="header-controls">
-        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
-        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+        <button id="lang-toggle">ES</button>
+        <button id="mode-toggle">🌙</button>
       </div>
     </header>
 
@@ -24,32 +24,16 @@
       <a href="admin.html"><button>Admin</button></a>
     </nav>
 
-    <section class="card" role="region" aria-labelledby="plastic-exchange-title">
-      <h2 id="plastic-exchange-title">Exchange Plastic Credits</h2>
-      <input
-        type="number"
-        id="plastic-input"
-        placeholder="Enter plastic credits (kg)"
-        min="0"
-        step="0.01"
-        aria-label="Plastic credits amount"
-      />
-      <button id="plastic-exchange-btn" class="exchange-btn">Exchange for TUC</button>
-      <p id="plastic-status" aria-live="polite"></p>
+    <section class="card">
+      <h2>Exchange Plastic Credits</h2>
+      <input type="number" id="plastic-input" placeholder="Plastic credits (kg)" min="0" step="0.01" />
+      <button id="plastic-exchange-btn">Exchange for TUC</button>
     </section>
 
-    <section class="card" role="region" aria-labelledby="solar-exchange-title">
-      <h2 id="solar-exchange-title">Exchange Solar Credits</h2>
-      <input
-        type="number"
-        id="solar-input"
-        placeholder="Enter solar credits (kWh)"
-        min="0"
-        step="0.01"
-        aria-label="Solar credits amount"
-      />
-      <button id="solar-exchange-btn" class="exchange-btn">Exchange for TUC</button>
-      <p id="solar-status" aria-live="polite"></p>
+    <section class="card">
+      <h2>Exchange Solar Credits</h2>
+      <input type="number" id="solar-input" placeholder="Solar credits (kWh)" min="0" step="0.01" />
+      <button id="solar-exchange-btn">Exchange for TUC</button>
     </section>
 
     <footer>
@@ -57,5 +41,11 @@
     </footer>
   </div>
   <script type="module" src="app.js"></script>
+  <div id="modal">
+    <div id="modal-content">
+      <p id="modal-message">This is a message</p>
+      <button id="modal-close">OK</button>
+    </div>
+  </div>
 </body>
 </html>

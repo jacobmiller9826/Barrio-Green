@@ -11,43 +11,47 @@
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
-      <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
-      </div>
     </header>
 
-    <nav>
-      <a href="dashboard.html"><button>Dashboard</button></a>
-      <a href="exchange.html"><button>Exchange Credits</button></a>
-      <a href="rewards.html"><button disabled style="opacity: 0.6; cursor: default;">Rewards</button></a>
-      <a href="admin.html"><button>Admin</button></a>
+    <nav class="nav-bar">
+      <button id="nav-dashboard" class="nav-button" onclick="location.href='index.html'">Dashboard</button>
+      <button id="nav-rewards" class="nav-button" disabled>Rewards</button>
+      <button id="nav-admin" class="nav-button" onclick="location.href='admin.html'">Admin</button>
     </nav>
 
-    <section class="card">
-      <h2>Rewards Catalog</h2>
-      <div class="reward-item card">
-        <h3>Baseball Tickets</h3>
-        <p>Cost: 50 TUC</p>
-        <button class="redeem-btn" data-cost="50">Redeem</button>
-      </div>
-      <div class="reward-item card">
-        <h3>Farmers Market Discount</h3>
-        <p>Cost: 30 TUC</p>
-        <button class="redeem-btn" data-cost="30">Redeem</button>
-      </div>
-    </section>
+    <main>
+      <section id="rewards-section" class="card">
+        <h2>Rewards Catalog</h2>
+        <div id="rewards-list">
+          <div class="reward-item card">
+            <h3>Baseball Tickets</h3>
+            <p>Cost: 50 TUC</p>
+            <button class="redeem-btn">Redeem</button>
+          </div>
+          <div class="reward-item card">
+            <h3>Farmers Market Discount</h3>
+            <p>Cost: 30 TUC</p>
+            <button class="redeem-btn">Redeem</button>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
+      <button id="lang-toggle" class="footer-button">ES</button>
+      <button id="mode-toggle" class="footer-button">🌙</button>
       <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
-  <script type="module" src="app.js"></script>
-  <div id="modal">
-    <div id="modal-content">
-      <p id="modal-message">This is a message</p>
-      <button id="modal-close">OK</button>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close">Close</button>
+      </div>
     </div>
+
+    <script type="module" src="app.js"></script>
   </div>
 </body>
 </html>

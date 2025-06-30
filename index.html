@@ -9,37 +9,66 @@
 <body>
   <div class="app-container">
     <header>
-      <h1>Barrio Green</h1>
-      <p>Arizona Community Rewards</p>
+      <h1 id="app-title">Barrio Green</h1>
+      <p id="app-subtitle">Arizona Community Rewards</p>
+      <div class="header-controls">
+        <button id="lang-toggle">ES</button>
+        <button id="mode-toggle">🌙</button>
+      </div>
     </header>
 
-    <main id="main">
-      <div id="login-section" class="card">
-        <h2>Login</h2>
-        <input type="email" id="email-input" placeholder="Enter your email" />
-        <button id="login-button">Login with Email</button>
-      </div>
+    <main>
+      <nav class="nav">
+        <button id="nav-dashboard">Dashboard</button>
+        <button id="nav-rewards">Rewards</button>
+        <button id="nav-admin">Admin</button>
+      </nav>
 
-      <div id="dashboard-section" class="hidden">
+      <section id="dashboard-section" class="card">
         <div class="card">
-          <h2>Welcome 👋</h2>
-          <p id="user-address"></p>
+          <h2 id="welcome-title">Welcome 👋</h2>
+          <p class="address" id="user-address"></p>
         </div>
-
         <div class="card">
-          <h3>Your TUC Balance</h3>
+          <h3 id="balance-title">Your TUC Balance</h3>
           <p id="balance">Loading...</p>
         </div>
+      </section>
 
-        <button id="logout-button" class="logout-btn">Logout</button>
-      </div>
+      <section id="rewards-section" class="hidden">
+        <div class="card">
+          <h2 id="rewards-title">Rewards Catalog</h2>
+          <div id="rewards-list">
+            <div class="reward-item">
+              <h3>Baseball Tickets</h3>
+              <p>Cost: 50 TUC</p>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+            <div class="reward-item">
+              <h3>Farmers Market Discount</h3>
+              <p>Cost: 30 TUC</p>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-section" class="hidden">
+        <div class="card">
+          <h2 id="admin-title">Admin Mint Tokens</h2>
+          <input type="text" id="mint-address" placeholder="Recipient Address" />
+          <input type="number" id="mint-amount" placeholder="Amount" />
+          <button id="mint-button">Mint Tokens</button>
+          <p id="mint-status"></p>
+        </div>
+      </section>
     </main>
 
     <footer>
-      <p>Made for Tucson 🌵 Barrio Green 2025</p>
+      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
 
-  <script src="app.js" type="module"></script>
+    <script type="module" src="app.js"></script>
+  </div>
 </body>
 </html>

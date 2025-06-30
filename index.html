@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Barrio Green – Rewards App</title>
+  <title>Barrio Green – Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,9 +14,9 @@
     </header>
 
     <nav class="nav-bar">
-      <button id="nav-dashboard" class="nav-button">Dashboard</button>
-      <button id="nav-rewards" class="nav-button">Rewards</button>
-      <button id="nav-admin" class="nav-button">Admin</button>
+      <button id="nav-dashboard" class="nav-button" disabled>Dashboard</button>
+      <button id="nav-rewards" class="nav-button" onclick="location.href='rewards.html'">Rewards</button>
+      <button id="nav-admin" class="nav-button" onclick="location.href='admin.html'">Admin</button>
     </nav>
 
     <main>
@@ -29,30 +29,6 @@
           <p id="balance">Loading...</p>
         </div>
       </section>
-
-      <section id="rewards-section" class="card hidden">
-        <h2>Rewards Catalog</h2>
-        <div id="rewards-list">
-          <div class="reward-item card">
-            <h3>Baseball Tickets</h3>
-            <p>Cost: 50 TUC</p>
-            <button class="redeem-btn">Redeem</button>
-          </div>
-          <div class="reward-item card">
-            <h3>Farmers Market Discount</h3>
-            <p>Cost: 30 TUC</p>
-            <button class="redeem-btn">Redeem</button>
-          </div>
-        </div>
-      </section>
-
-      <section id="admin-section" class="card hidden">
-        <h2>Admin Mint Tokens</h2>
-        <input type="text" id="mint-address" placeholder="Recipient Address" />
-        <input type="number" id="mint-amount" placeholder="Amount to Mint" />
-        <button id="mint-button">Mint Tokens</button>
-        <p id="mint-status"></p>
-      </section>
     </main>
 
     <footer>
@@ -61,7 +37,7 @@
       <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
 
-    <!-- Modal for messages -->
+    <!-- Modal -->
     <div id="modal" class="modal hidden">
       <div class="modal-content">
         <p id="modal-message"></p>

@@ -57,9 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function toggleLanguage() {
     currentLang = currentLang === "EN" ? "ES" : "EN";
-    langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
-    document.getElementById("app-title").textContent = currentLang === "EN" ? "Barrio Green" : "Barrio Verde";
-    document.getElementById("app-subtitle").textContent = currentLang === "EN" ? "Arizona Community Rewards" : "Recompensas Comunitarias de Arizona";
+    if (langToggle) langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
+    const title = document.getElementById("app-title");
+    const subtitle = document.getElementById("app-subtitle");
+    if (title) title.textContent = currentLang === "EN" ? "Barrio Green" : "Barrio Verde";
+    if (subtitle) subtitle.textContent = currentLang === "EN" ? "Arizona Community Rewards" : "Recompensas Comunitarias de Arizona";
   }
 
   function toggleMode() {

@@ -12,28 +12,29 @@
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
       <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
+        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
       </div>
     </header>
 
     <nav>
       <a href="dashboard.html"><button>Dashboard</button></a>
+      <a href="exchange.html"><button>Exchange Credits</button></a>
       <a href="rewards.html"><button>Rewards</button></a>
       <a href="admin.html"><button>Admin</button></a>
     </nav>
 
-    <section class="card">
-      <h2>Welcome to Barrio Green 🌵</h2>
+    <section class="card" role="region" aria-labelledby="welcome-title">
+      <h2 id="welcome-title">Welcome to Barrio Green 🌵</h2>
       <p>
-        Earn TUC tokens for recycling, solar participation, and community support. 
-        Redeem them for local Arizona rewards like sports tickets and market discounts.
+        Earn TUC tokens by recycling plastic and participating in solar programs.
+        Redeem your tokens for local Arizona rewards like sports tickets and market discounts.
       </p>
     </section>
 
-    <section class="card">
-      <h3>Get Started</h3>
-      <p>Ready to make an impact? Connect your wallet and start earning today.</p>
+    <section class="card" role="region" aria-labelledby="get-started-title">
+      <h3 id="get-started-title">Get Started</h3>
+      <p>Connect your wallet to start earning today.</p>
       <a href="dashboard.html"><button>Go to Dashboard</button></a>
     </section>
 

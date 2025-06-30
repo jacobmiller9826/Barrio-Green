@@ -1,51 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Barrio Green – Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <div class="app-container">
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
+      <div class="header-controls">
+        <button id="lang-toggle" class="circle-btn" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" class="circle-btn" aria-label="Toggle Dark Mode">🌙</button>
+      </div>
     </header>
 
     <nav class="nav-bar">
       <a href="index.html" class="nav-button">Home</a>
-      <a href="dashboard.html" class="nav-button disabled">Dashboard</a>
+      <a href="dashboard.html" class="nav-button nav-active">Dashboard</a>
       <a href="rewards.html" class="nav-button">Rewards</a>
       <a href="exchange.html" class="nav-button">Exchange</a>
       <a href="admin.html" class="nav-button">Admin</a>
       <a href="help.html" class="nav-button">Help</a>
     </nav>
 
-    <main>
-      <div class="card">
-        <h2>Your Wallet</h2>
-        <p class="address" id="user-address">Loading...</p>
-      </div>
-      <div class="card">
-        <h3>Your TUC Balance</h3>
-        <p id="balance">Loading...</p>
-      </div>
+    <main id="content">
+      <section class="card">
+        <h2 id="dashboard-title">Dashboard</h2>
+        <p><strong id="user-label">User wallet address:</strong> <span id="user-address">Not connected</span></p>
+        <p><strong id="balance-label">Balance:</strong> <span id="balance">0 TUC</span></p>
+        <button id="connect-wallet" class="nav-button">Connect Wallet</button>
+      </section>
     </main>
 
     <footer>
-      <button id="lang-toggle" class="footer-button">ES</button>
-      <button id="mode-toggle" class="footer-button">🌙</button>
+      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <p id="modal-message"></p>
-      <button id="modal-close">Close</button>
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-message">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close" class="nav-button">Close</button>
+      </div>
     </div>
-  </div>
 
-  <script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
+  </div>
 </body>
 </html>

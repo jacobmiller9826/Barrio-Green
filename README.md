@@ -1,105 +1,72 @@
-# 🌵 Barrio Green – Arizona Blockchain Rewards App
+# Barrio Green – Arizona Community Rewards DApp
 
-Welcome to **Barrio Green**, a mobile-friendly, blockchain-powered rewards app designed to drive real recycling and sustainability engagement in Arizona communities.
-
-Built for partners like **Byfusion** and local governments who want to reward residents for greener choices.
+Barrio Green is a simple, beautiful, and intuitive decentralized app (DApp) built to reward Tucson community members with tokenized incentives for solar and recycling participation. The app connects to a smart contract deployed on the Sepolia testnet, managing TUC tokens.
 
 ---
 
-## ✅ What Is Barrio Green?
+## Features
 
-Barrio Green is a decentralized web app (DApp) that lets users:
-
-- ✅ Log in with **just an email** (no crypto wallet required)
-- ✅ Get an **embedded blockchain wallet** automatically
-- ✅ See their **TUC token balance** (Tucson Utility Coin)
-- ✅ Redeem tokens for **community rewards** like local sports tickets, discounts, or perks
-
----
-
-## 🚀 Features
-
-- 🌵 Arizona-inspired, mobile-first design
-- 🧓 Big, easy-to-read layout for older users
-- 🔒 Embedded Wallet email login (Thirdweb)
-- ⚡ Token balance pulled live from Sepolia network
-- 🏷️ Fully decentralized, no backend server needed
-- 🪙 ERC-20 standard contract (customizable rewards)
-- 🌐 Host on **GitHub Pages** for free
+- **Auto-generated wallet:** No login or email required. Wallet is created locally in your browser.
+- **Dashboard:** Displays your connected wallet address and your current TUC token balance.
+- **Rewards Catalog:** Browse community rewards such as baseball tickets and farmers market discounts redeemable with TUC tokens.
+- **Admin Mint Page:** For authorized users to mint new TUC tokens to any Ethereum address. This enables token distribution to community members or testers.
+- **Language Toggle:** Switch between English and Spanish.
+- **Dark Mode:** Switch between light and dark themes for easier viewing.
+- **Mobile-friendly:** Designed with large text, rounded boxes, and Arizona-inspired colors for clarity and accessibility.
 
 ---
 
-## 🛠️ Tech Stack
+## How to Use
 
-- ✅ HTML / CSS / JavaScript
-- ✅ Thirdweb Embedded Wallet SDK
-- ✅ Thirdweb EVM SDK
-- ✅ Deployed ERC-20 contract on **Sepolia** testnet
-
----
-
-## ⚡ Demo
-
-> 📱 Mobile-first interface
-> 
-> 📨 Email login (Embedded Wallet)
-> 
-> 💰 See your TUC balance on-chain
+1. Open the app in a modern browser.
+2. The app auto-generates a local wallet for you.
+3. View your wallet address and TUC balance on the dashboard.
+4. Navigate to the Rewards page to see available rewards.
+5. (Admins only) Use the Admin Mint page to mint TUC tokens to users.
+6. Use the language and dark mode toggles in the header for personalization.
 
 ---
 
-## 🏗️ How It Works
+## Admin Mint Page Details
 
-1️⃣ User logs in with email – creates blockchain wallet  
-2️⃣ Wallet connects to the Sepolia network  
-3️⃣ User sees their TUC token balance from the deployed ERC-20 contract  
-4️⃣ Admin can mint tokens as rewards for recycling or sustainability actions  
-
----
-
-## 💼 Why Use Barrio Green?
-
-✅ Reward real recycling action with blockchain transparency  
-✅ Engage the community with simple email onboarding  
-✅ Support local sports teams and partners through token-based rewards  
-✅ Provide audit-friendly, tamper-proof data on engagement  
+- The admin page allows minting new tokens by entering a recipient wallet address and the amount of TUC tokens.
+- Only wallets with minting permissions on the deployed contract can successfully mint tokens.
+- This page should be secured or restricted in a production environment to prevent unauthorized minting.
 
 ---
 
-## ⚙️ How to Deploy
+## Technical Details
 
-1. Clone this repo
-2. Add your Thirdweb **clientId** and **contractAddress** to `app.js`
-3. Commit and push to GitHub
-4. Enable **GitHub Pages** in repo settings
-5. Share the link!
-
----
-
-## 🌐 Live Hosting
-
-✅ Fully static site = free hosting on GitHub Pages or any static host  
-✅ No backend server needed  
+- **Smart Contract Network:** Sepolia testnet
+- **Smart Contract Address:** `0xC52a002023ABA42B4490f625Df6434fc26E425c8`
+- **Blockchain SDK:** Thirdweb JavaScript SDK and Embedded Wallet
+- **Frontend:** HTML, CSS, and JavaScript, hosted on GitHub Pages
 
 ---
 
-## 🤝 Ideal Partners
+## Setup and Deployment
 
-- Cities and municipalities
-- Recycling companies (e.g. Byfusion)
-- Local sports teams (for rewards partnerships)
-- Sustainability nonprofits
-
----
-
-## 📄 License
-
-MIT License – Free to adapt for your community project.  
+1. Clone or download this repository.
+2. Host the files on GitHub Pages or any static hosting provider.
+3. Ensure you have access to the smart contract on Sepolia and proper permissions if you intend to mint tokens.
+4. Open the app in a browser to start using.
 
 ---
 
-## ❤️ Made in Arizona
+## Future Improvements
 
-> Barrio Green was designed to support real communities in the desert 🌵
-> 
-> Let’s build a cleaner, greener Tucson together.
+- Secure admin page with authentication.
+- Implement on-chain rewards redemption logic.
+- Add more rewards and dynamic catalog loading.
+- Integrate notifications or email alerts for users.
+- Support mainnet deployment and real token economics.
+
+---
+
+## License
+
+This project is open source and available under the MIT License.
+
+---
+
+Made with ❤️ for Tucson and Arizona communities 🌵  

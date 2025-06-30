@@ -12,6 +12,7 @@ const wallet = createLocalWallet();
 
 let currentLang = "EN";
 
+// Modal
 const modal = document.getElementById("modal");
 const modalMessage = document.getElementById("modal-message");
 const modalClose = document.getElementById("modal-close");
@@ -21,124 +22,67 @@ function showModal(message) {
   modal.classList.remove("hidden");
 }
 
-modalClose.addEventListener("click", () => {
+modalClose?.addEventListener("click", () => {
   modal.classList.add("hidden");
 });
 
-// Language toggle
-const langToggle = document.getElementById("lang-toggle");
-langToggle?.addEventListener("click", () => {
-  currentLang = currentLang === "EN" ? "ES" : "EN";
-  langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
-  document.getElementById("app-title").textContent = currentLang === "EN" ? "Barrio Green" : "Barrio Verde";
-  document.getElementById("app-subtitle").textContent = currentLang === "EN" ? "Arizona Community Rewards" : "Recompensas Comunitarias de Arizona";
-});
-
-// Dark mode toggle
-const modeToggle = document.getElementById("mode-toggle");
-modeToggle?.addEventListener("click", () => {
+// Dark mode
+document.getElementById("mode-toggle")?.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
 
-// Utility to get contract instance
-async function getTokenContract() {
-  return getContract({ client, address: contractAddress, chain });
-}
+// Language toggle
+document.getElementById("lang-toggle")?.addEventListener("click", () => {
+  currentLang = currentLang === "EN" ? "ES" : "EN";
+  document.getElementById("lang-toggle").textContent = currentLang === "EN" ? "ES" : "EN";
+  document.getElementById("app-title").textContent = currentLang === "EN" ? "Barrio Green" : "Barrio Verde";
+  document.getElementById("app-subtitle").textContent = currentLang === "EN"
+    ? "Arizona Community Rewards" : "Recompensas Comunitarias de Arizona";
+});
 
-// ======================
-// Dashboard page logic
-// ======================
-async function dashboardPageInit() {
+// Wallet connect and balance
+async function connectWalletAndLoad() {
   try {
     await wallet.connect();
     const address = await wallet.getAddress();
-    const userAddressEl = document.getElementById("user-address");
-    const balanceEl = document.getElementById("balance");
+    document.getElementById("user-address").textContent = address;
 
-    if (!address) {
-      userAddressEl.textContent = currentLang === "EN" ? "Wallet not connected" : "Cartera no conectada";
-      balanceEl.textContent = "-";
-      return;
-    }
-
-    userAddressEl.textContent = address;
-
-    const contract = await getTokenContract();
+    const contract = await getContract({ client, address: contractAddress, chain });
     const balance = await contract.erc20.balanceOf(address);
-
-    balanceEl.textContent = `${balance.displayValue} TUC`;
+    document.getElementById("balance").textContent = `${balance.displayValue} TUC`;
   } catch (err) {
     console.error(err);
-    const balanceEl = document.getElementById("balance");
-    if (balanceEl) balanceEl.textContent = currentLang === "EN" ? "Error loading balance." : "Error cargando saldo.";
+    document.getElementById("balance").textContent = "Error";
   }
 }
 
-// ======================
-// Rewards page logic
-// ======================
-function rewardsPageInit() {
-  const redeemButtons = document.querySelectorAll(".redeem-btn");
-  redeemButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const rewardName = button.parentElement.querySelector("h3")?.textContent || "Reward";
-      const costText = button.parentElement.querySelector("p")?.textContent || "";
-      showModal(
-        currentLang === "EN"
-          ? `You have redeemed "${rewardName}". ${costText}`
-          : `Has canjeado "${rewardName}". ${costText}`
-      );
-      // Here you would add blockchain logic to deduct tokens, etc.
-    });
-  });
-}
-
-// ======================
-// Admin page logic
-// ======================
-function adminPageInit() {
-  const mintButton = document.getElementById("mint-button");
-  const mintAddressInput = document.getElementById("mint-address");
-  const mintAmountInput = document.getElementById("mint-amount");
-  const mintStatus = document.getElementById("mint-status");
-
-  mintButton?.addEventListener("click", async () => {
-    const toAddress = mintAddressInput.value.trim();
-    const amount = mintAmountInput.value.trim();
-
-    if (!toAddress || !amount) {
-      mintStatus.textContent = currentLang === "EN" ? "Please enter valid address and amount." : "Por favor, ingrese dirección y cantidad válidas.";
-      return;
-    }
-
-    try {
-      mintStatus.textContent = currentLang === "EN" ? "Minting tokens..." : "Generando tokens...";
-      const contract = await getTokenContract();
-      await contract.erc20.mintTo(toAddress, amount);
-      mintStatus.textContent = currentLang === "EN" ? "Mint successful!" : "¡Generación exitosa!";
-      mintAddressInput.value = "";
-      mintAmountInput.value = "";
-    } catch (err) {
-      console.error(err);
-      mintStatus.textContent = currentLang === "EN" ? "Error minting tokens." : "Error al generar tokens.";
-    }
-  });
-}
-
-// ======================
-// Initialization
-// ======================
-document.addEventListener("DOMContentLoaded", () => {
-  // Detect which page we are on by looking for unique elements:
-  if (document.getElementById("balance")) {
-    dashboardPageInit();
-  }
-
-  if (document.getElementById("rewards-list")) {
-    rewardsPageInit();
-  }
-
-  if (document.getElementById("mint-button")) {
-    adminPageInit();
+// Mint
+document.getElementById("mint-button")?.addEventListener("click", async () => {
+  const address = document.getElementById("mint-address").value.trim();
+  const amount = document.getElementById("mint-amount").value.trim();
+  try {
+    const contract = await getContract({ client, address: contractAddress, chain });
+    await contract.erc20.mintTo(address, amount);
+    showModal(currentLang === "EN" ? "Mint Successful!" : "¡Generación exitosa!");
+  } catch (err) {
+    console.error(err);
+    showModal(currentLang === "EN" ? "Error minting." : "Error al generar.");
   }
 });
+
+// Rewards
+document.querySelectorAll(".redeem-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    showModal(currentLang === "EN" ? "Reward redeemed! 🎉" : "¡Recompensa canjeada! 🎉");
+  });
+});
+
+// Exchange
+document.getElementById("exchange-button")?.addEventListener("click", () => {
+  showModal(currentLang === "EN" ? "Exchange completed! ✅" : "¡Intercambio completado! ✅");
+});
+
+// Init dashboard
+if (document.getElementById("user-address")) {
+  connectWalletAndLoad();
+}

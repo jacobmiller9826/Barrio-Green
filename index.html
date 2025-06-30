@@ -14,38 +14,35 @@
     </header>
 
     <nav class="nav-bar">
-      <button id="nav-dashboard" class="nav-button" disabled>Dashboard</button>
-      <button id="nav-rewards" class="nav-button" onclick="location.href='rewards.html'">Rewards</button>
-      <button id="nav-admin" class="nav-button" onclick="location.href='admin.html'">Admin</button>
+      <a href="index.html" class="nav-button" disabled>Dashboard</a>
+      <a href="rewards.html" class="nav-button">Rewards</a>
+      <a href="admin.html" class="nav-button">Admin</a>
     </nav>
 
     <main>
-      <section id="dashboard-section" class="card">
+      <div class="card">
         <h2>Welcome 👋</h2>
-        <p class="address" id="user-address">Not connected</p>
-
-        <div class="balance-container card">
-          <h3>Your TUC Balance</h3>
-          <p id="balance">Loading...</p>
-        </div>
-      </section>
+        <p class="address" id="user-address">Loading...</p>
+      </div>
+      <div class="card balance-container">
+        <h3>Your TUC Balance</h3>
+        <p id="balance">Loading...</p>
+      </div>
     </main>
 
     <footer>
       <button id="lang-toggle" class="footer-button">ES</button>
       <button id="mode-toggle" class="footer-button">🌙</button>
-      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-
-    <!-- Modal -->
-    <div id="modal" class="modal hidden">
-      <div class="modal-content">
-        <p id="modal-message"></p>
-        <button id="modal-close">Close</button>
-      </div>
-    </div>
-
-    <script type="module" src="app.js"></script>
   </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button id="modal-close">Close</button>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

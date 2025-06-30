@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Barrio Green – Help</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <div class="app-container">
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
+      <div class="header-controls">
+        <button id="lang-toggle" class="circle-btn" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" class="circle-btn" aria-label="Toggle Dark Mode">🌙</button>
+      </div>
     </header>
 
     <nav class="nav-bar">
@@ -19,34 +24,28 @@
       <a href="rewards.html" class="nav-button">Rewards</a>
       <a href="exchange.html" class="nav-button">Exchange</a>
       <a href="admin.html" class="nav-button">Admin</a>
-      <a href="help.html" class="nav-button disabled">Help</a>
+      <a href="help.html" class="nav-button nav-active">Help</a>
     </nav>
 
-    <main>
-      <div class="card">
-        <h2>Help & FAQ</h2>
-        <p><strong>What is Barrio Green?</strong></p>
-        <p>A community rewards app for Arizona residents to encourage recycling and solar participation.</p>
-        <p><strong>How do I earn TUC?</strong></p>
-        <p>Recycle plastics, use solar credits, and get rewarded.</p>
-        <p><strong>Need more help?</strong></p>
-        <p>Contact us at <a href="mailto:support@barriogreen.com">support@barriogreen.com</a></p>
-      </div>
+    <main id="content">
+      <section class="card">
+        <h2 id="help-title">Help & FAQ</h2>
+        <p id="help-text">Coming soon. Ask your admin for support!</p>
+      </section>
     </main>
 
     <footer>
-      <button id="lang-toggle" class="footer-button">ES</button>
-      <button id="mode-toggle" class="footer-button">🌙</button>
+      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
     </footer>
-  </div>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <p id="modal-message"></p>
-      <button id="modal-close">Close</button>
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-message">
+      <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="modal-close" class="nav-button">Close</button>
+      </div>
     </div>
-  </div>
 
-  <script type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
+  </div>
 </body>
 </html>

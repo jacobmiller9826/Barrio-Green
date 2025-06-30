@@ -2,31 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Barrio Green – Help</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <header>❓ Help / FAQ</header>
-  <main>
-    <section>
-      <h2>How It Works</h2>
-      <p>Log your recycling or solar credits. Get TUC tokens. Redeem for local sports rewards!</p>
-      <p>1. Connect your wallet</p>
-      <p>2. Log activity</p>
-      <p>3. Redeem rewards</p>
-      <p>4. Help keep Tucson green!</p>
-    </section>
-  </main>
-  <nav>
-    <button onclick="location.href='dashboard.html'">🏠 Home</button>
-    <button onclick="location.href='rewards.html'">🎁 Rewards</button>
-    <button onclick="location.href='help.html'">❓ Help</button>
-    <button id="settingsButton">⚙️ Settings</button>
-  </nav>
-  <footer>
-    Barrio Green – Built for Tucson
-  </footer>
-  <script src="app.js"></script>
+  <div class="app-container">
+    <header>
+      <h1 id="app-title">Barrio Green</h1>
+      <p id="app-subtitle">Arizona Community Rewards</p>
+    </header>
+
+    <nav class="nav-bar">
+      <a href="index.html" class="nav-button">Home</a>
+      <a href="dashboard.html" class="nav-button">Dashboard</a>
+      <a href="rewards.html" class="nav-button">Rewards</a>
+      <a href="exchange.html" class="nav-button">Exchange</a>
+      <a href="admin.html" class="nav-button">Admin</a>
+      <a href="help.html" class="nav-button disabled">Help</a>
+    </nav>
+
+    <main>
+      <div class="card">
+        <h2>Help & FAQ</h2>
+        <p><strong>What is Barrio Green?</strong></p>
+        <p>A community rewards app for Arizona residents to encourage recycling and solar participation.</p>
+        <p><strong>How do I earn TUC?</strong></p>
+        <p>Recycle plastics, use solar credits, and get rewarded.</p>
+        <p><strong>Need more help?</strong></p>
+        <p>Contact us at <a href="mailto:support@barriogreen.com">support@barriogreen.com</a></p>
+      </div>
+    </main>
+
+    <footer>
+      <button id="lang-toggle" class="footer-button">ES</button>
+      <button id="mode-toggle" class="footer-button">🌙</button>
+    </footer>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button id="modal-close">Close</button>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

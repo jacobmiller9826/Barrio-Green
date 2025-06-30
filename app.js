@@ -12,12 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const wallet = createLocalWallet();
 
   let currentLang = "EN";
+  let exchangeRates = {
+    plastic: 10,
+    solar: 20
+  };
 
   const userAddress = document.getElementById("user-address");
   const balanceDisplay = document.getElementById("balance");
   const langToggle = document.getElementById("lang-toggle");
   const modeToggle = document.getElementById("mode-toggle");
-  const mintButton = document.getElementById("mint-button");
 
   async function init() {
     await wallet.connect();
@@ -40,10 +43,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  async function exchangeCredits(type) {
+    const input = document.getElementById(`${type}-input`);
+    const status = document.getElementById(`${type}-status`);
+    if (!input || !status) return;
+
+    const amount = parseFloat(input.value);
+    if (isNaN(amount) || amount <= 0) {
+      status.textContent = currentLang === "EN" ? "Enter valid amount." : "Ingrese una cantidad válida.";
+      return;
+    }
+
+    const tucAmount = amount * exchangeRates[type];
+    try {
+      status.textContent = currentLang === "EN" ? "Exchanging..." : "Intercambiando...";
+      const contract = await getContract({ client, address: contractAddress, chain });
+      const userAddr = await wallet.getAddress();
+      await contract.erc20.mintTo(userAddr, tucAmount.toString());
+      status.textContent = currentLang === "EN" ? `Exchanged for ${tucAmount} TUC!` : `¡Intercambiado por ${tucAmount} TUC!`;
+    } catch (err) {
+      console.error(err);
+      status.textContent = currentLang === "EN" ? "Error during exchange." : "Error en el intercambio.";
+    }
+  }
+
   async function mintTokens() {
     const mintAddressInput = document.getElementById("mint-address");
     const mintAmountInput = document.getElementById("mint-amount");
     const mintStatus = document.getElementById("mint-status");
+    if (!mintAddressInput || !mintAmountInput || !mintStatus) return;
+
     try {
       mintStatus.textContent = currentLang === "EN" ? "Minting..." : "Generando...";
       const contract = await getContract({ client, address: contractAddress, chain });
@@ -68,9 +97,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("dark");
   }
 
-  if (mintButton) mintButton.addEventListener("click", mintTokens);
+  // Attach to common elements
   if (langToggle) langToggle.addEventListener("click", toggleLanguage);
   if (modeToggle) modeToggle.addEventListener("click", toggleMode);
+
+  // Exchange buttons
+  const plasticBtn = document.getElementById("plastic-exchange-btn");
+  if (plasticBtn) plasticBtn.addEventListener("click", () => exchangeCredits("plastic"));
+  const solarBtn = document.getElementById("solar-exchange-btn");
+  if (solarBtn) solarBtn.addEventListener("click", () => exchangeCredits("solar"));
+
+  // Admin mint
+  const mintButton = document.getElementById("mint-button");
+  if (mintButton) mintButton.addEventListener("click", mintTokens);
 
   init();
 });

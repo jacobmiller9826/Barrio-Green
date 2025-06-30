@@ -1,10 +1,9 @@
-// Import if using thirdweb
+// Import Thirdweb SDK modules for blockchain (keep if your environment supports it)
 import { createThirdwebClient } from "https://esm.sh/@thirdweb-dev/react-core@0.16.1";
 import { createLocalWallet } from "https://esm.sh/@thirdweb-dev/wallets@0.16.1";
 import { getContract } from "https://esm.sh/@thirdweb-dev/sdk@0.16.1/evm";
 import { defineChain } from "https://esm.sh/@thirdweb-dev/chains@0.16.1";
 
-// THIRDWEB SETTINGS
 const clientId = "05a0325af41e925b0e2ff52a16efa407";
 const contractAddress = "0xC52a002023ABA42B4490f625Df6434fc26E425c8";
 const chain = defineChain("sepolia");
@@ -15,7 +14,6 @@ const wallet = createLocalWallet();
 let currentLang = localStorage.getItem("lang") || "EN";
 let darkMode = localStorage.getItem("dark") === "true";
 
-// Get modal
 const modal = document.getElementById("modal");
 const modalMessage = document.getElementById("modal-message");
 const modalClose = document.getElementById("modal-close");
@@ -24,26 +22,23 @@ function showModal(message) {
   if (modal && modalMessage && modalClose) {
     modalMessage.textContent = message;
     modal.classList.remove("hidden");
-    modalClose.onclick = () => modal.classList.add("hidden");
+    modalClose.focus();
   }
 }
 
-// Apply dark mode if remembered
-if (darkMode) document.body.classList.add("dark");
-
-// Language toggle
-const langToggle = document.getElementById("lang-toggle");
-if (langToggle) {
-  langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
-  langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "EN" ? "ES" : "EN";
-    localStorage.setItem("lang", currentLang);
-    langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
-    updateLanguage();
-  });
+function closeModal() {
+  if (modal) {
+    modal.classList.add("hidden");
+  }
 }
 
-// Dark mode toggle
+// Close modal on click of close button or ESC key
+modalClose?.addEventListener("click", closeModal);
+window.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+
+// Dark mode toggle button
 const modeToggle = document.getElementById("mode-toggle");
 if (modeToggle) {
   modeToggle.addEventListener("click", () => {
@@ -51,105 +46,127 @@ if (modeToggle) {
     darkMode = document.body.classList.contains("dark");
     localStorage.setItem("dark", darkMode);
   });
+  if (darkMode) document.body.classList.add("dark");
 }
 
-// Update text content for language
-function updateLanguage() {
+// Language toggle button
+const langToggle = document.getElementById("lang-toggle");
+if (langToggle) {
+  langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "EN" ? "ES" : "EN";
+    localStorage.setItem("lang", currentLang);
+    langToggle.textContent = currentLang === "EN" ? "ES" : "EN";
+    updateLanguageText();
+  });
+}
+
+function updateLanguageText() {
   const title = document.getElementById("app-title");
   const subtitle = document.getElementById("app-subtitle");
-  if (title) title.textContent = currentLang === "EN" ? "Barrio Green" : "Barrio Verde";
-  if (subtitle) subtitle.textContent = currentLang === "EN"
-    ? "Arizona Community Rewards"
-    : "Recompensas Comunitarias de Arizona";
+  if (title)
+    title.textContent = currentLang === "EN" ? "Barrio Green" : "Barrio Verde";
+  if (subtitle)
+    subtitle.textContent =
+      currentLang === "EN"
+        ? "Arizona Community Rewards"
+        : "Recompensas Comunitarias de Arizona";
 }
-updateLanguage();
+updateLanguageText();
 
-// Wallet
-let connectedAddress = localStorage.getItem("walletAddress") || null;
+// Navigation buttons
+const navDashboard = document.getElementById("nav-dashboard");
+const navRewards = document.getElementById("nav-rewards");
+const navExchange = document.getElementById("nav-exchange");
+const navAdmin = document.getElementById("nav-admin");
+const navHelp = document.getElementById("nav-help");
+const content = document.getElementById("content");
 
-async function initWallet() {
-  if (!connectedAddress) {
-    await wallet.connect();
-    connectedAddress = await wallet.getAddress();
-    localStorage.setItem("walletAddress", connectedAddress);
+// Simple page content for demo purposes
+const pages = {
+  dashboard: `
+    <section class="card">
+      <h2>${currentLang === "EN" ? "Dashboard" : "Tablero"}</h2>
+      <p>${currentLang === "EN" ? "User wallet address:" : "Dirección del usuario:"} <span id="user-address">Not connected</span></p>
+      <p>${currentLang === "EN" ? "Balance:" : "Saldo:"} <span id="balance">0 TUC</span></p>
+      <button id="connect-wallet" class="nav-button">${currentLang === "EN" ? "Connect Wallet" : "Conectar Billetera"}</button>
+    </section>
+  `,
+  rewards: `
+    <section class="card">
+      <h2>${currentLang === "EN" ? "Rewards Catalog" : "Catálogo de Recompensas"}</h2>
+      <div class="reward-item">
+        <h3>${currentLang === "EN" ? "Baseball Tickets" : "Boletos de Béisbol"}</h3>
+        <p>${currentLang === "EN" ? "Cost: 50 TUC" : "Costo: 50 TUC"}</p>
+        <button class="redeem-btn nav-button">${currentLang === "EN" ? "Redeem" : "Canjear"}</button>
+      </div>
+      <div class="reward-item">
+        <h3>${currentLang === "EN" ? "Farmers Market Discount" : "Descuento en Mercado de Agricultores"}</h3>
+        <p>${currentLang === "EN" ? "Cost: 30 TUC" : "Costo: 30 TUC"}</p>
+        <button class="redeem-btn nav-button">${currentLang === "EN" ? "Redeem" : "Canjear"}</button>
+      </div>
+    </section>
+  `,
+  exchange: `
+    <section class="card">
+      <h2>${currentLang === "EN" ? "Exchange Credits" : "Intercambiar Créditos"}</h2>
+      <input type="number" id="exchange-amount" placeholder="${currentLang === "EN" ? "Amount to exchange" : "Cantidad a intercambiar"}" min="1" />
+      <button id="exchange-button" class="nav-button">${currentLang === "EN" ? "Exchange" : "Intercambiar"}</button>
+    </section>
+  `,
+  admin: `
+    <section class="card">
+      <h2>${currentLang === "EN" ? "Admin Mint Tokens" : "Administración: Generar Tokens"}</h2>
+      <input type="text" id="mint-address" placeholder="${currentLang === "EN" ? "Recipient Address" : "Dirección del destinatario"}" />
+      <input type="number" id="mint-amount" placeholder="${currentLang === "EN" ? "Amount" : "Cantidad"}" min="1" />
+      <button id="mint-button" class="nav-button">${currentLang === "EN" ? "Mint Tokens" : "Generar Tokens"}</button>
+    </section>
+  `,
+  help: `
+    <section class="card">
+      <h2>${currentLang === "EN" ? "Help & FAQ" : "Ayuda y Preguntas Frecuentes"}</h2>
+      <p>${currentLang === "EN" ? "Coming soon. Ask your admin for support!" : "Próximamente. ¡Pregunte a su administrador para obtener ayuda!"}</p>
+    </section>
+  `
+};
+
+// Navigation click handlers
+function loadPage(section) {
+  content.innerHTML = pages[section];
+  setTimeout(() => attachPageEvents(section), 100);
+}
+
+function attachPageEvents(section) {
+  if (section === "dashboard") {
+    document.getElementById("connect-wallet")?.addEventListener("click", () => {
+      showModal(currentLang === "EN" ? "Wallet connected (simulated)!" : "¡Billetera conectada (simulada)!");
+    });
   }
-  updateAddressDisplay();
-  fetchBalance();
-}
-
-// Address display
-async function updateAddressDisplay() {
-  const addr = document.getElementById("user-address");
-  if (addr && connectedAddress) {
-    addr.textContent = connectedAddress;
+  if (section === "rewards") {
+    document.querySelectorAll(".redeem-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        showModal(currentLang === "EN" ? "Redeemed successfully (simulated)!" : "¡Canjeado exitosamente (simulado)!");
+      });
+    });
+  }
+  if (section === "exchange") {
+    document.getElementById("exchange-button")?.addEventListener("click", () => {
+      showModal(currentLang === "EN" ? "Exchange successful (simulated)!" : "¡Intercambio exitoso (simulado)!");
+    });
+  }
+  if (section === "admin") {
+    document.getElementById("mint-button")?.addEventListener("click", () => {
+      showModal(currentLang === "EN" ? "Mint successful (simulated)!" : "¡Generación exitosa (simulada)!");
+    });
   }
 }
 
-// Fetch balance
-async function fetchBalance() {
-  try {
-    const balanceDisplay = document.getElementById("balance");
-    if (balanceDisplay) {
-      balanceDisplay.textContent = currentLang === "EN" ? "Loading..." : "Cargando...";
-      const contract = await getContract({ client, address: contractAddress, chain });
-      const balance = await contract.erc20.balanceOf(connectedAddress);
-      balanceDisplay.textContent = `${balance.displayValue} TUC`;
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
+// Attach navigation
+navDashboard?.addEventListener("click", () => loadPage("dashboard"));
+navRewards?.addEventListener("click", () => loadPage("rewards"));
+navExchange?.addEventListener("click", () => loadPage("exchange"));
+navAdmin?.addEventListener("click", () => loadPage("admin"));
+navHelp?.addEventListener("click", () => loadPage("help"));
 
-// Mint tokens
-const mintButton = document.getElementById("mint-button");
-if (mintButton) {
-  mintButton.addEventListener("click", async () => {
-    const mintAddress = document.getElementById("mint-address").value.trim();
-    const mintAmount = document.getElementById("mint-amount").value.trim();
-
-    if (!mintAddress || !mintAmount) {
-      showModal(currentLang === "EN" ? "Please enter address and amount." : "Por favor ingrese dirección y cantidad.");
-      return;
-    }
-
-    try {
-      const contract = await getContract({ client, address: contractAddress, chain });
-      await contract.erc20.mintTo(mintAddress, mintAmount);
-      showModal(currentLang === "EN" ? "Mint successful!" : "¡Generación exitosa!");
-    } catch (err) {
-      console.error(err);
-      showModal(currentLang === "EN" ? "Error minting." : "Error al generar.");
-    }
-  });
-}
-
-// Rewards redeem buttons
-document.querySelectorAll(".redeem-btn").forEach(btn =>
-  btn.addEventListener("click", () => {
-    showModal(currentLang === "EN"
-      ? "Redeemed! Enjoy your reward."
-      : "¡Canjeado! Disfruta tu recompensa.");
-  })
-);
-
-// Exchange button
-const exchangeButton = document.getElementById("exchange-button");
-if (exchangeButton) {
-  exchangeButton.addEventListener("click", () => {
-    const amount = document.getElementById("exchange-amount").value.trim();
-    if (!amount || isNaN(amount) || Number(amount) <= 0) {
-      showModal(currentLang === "EN"
-        ? "Enter a valid amount to exchange."
-        : "Ingrese una cantidad válida para intercambiar.");
-    } else {
-      showModal(currentLang === "EN"
-        ? `Exchanged ${amount} credits for TUC tokens!`
-        : `¡Intercambiados ${amount} créditos por tokens TUC!`);
-    }
-  });
-}
-
-// Try to init wallet if on dashboard
-if (document.getElementById("user-address")) {
-  initWallet();
-}
+// Load default page
+loadPage("dashboard");

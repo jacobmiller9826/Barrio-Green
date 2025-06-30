@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Barrio Green – Exchange Credits</title>
+  <title>Barrio Green – Exchange</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,41 +11,39 @@
     <header>
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
-      <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
-      </div>
     </header>
 
-    <nav>
-      <a href="dashboard.html"><button>Dashboard</button></a>
-      <a href="exchange.html"><button disabled style="opacity: 0.6; cursor: default;">Exchange Credits</button></a>
-      <a href="rewards.html"><button>Rewards</button></a>
-      <a href="admin.html"><button>Admin</button></a>
+    <nav class="nav-bar">
+      <a href="index.html" class="nav-button">Home</a>
+      <a href="dashboard.html" class="nav-button">Dashboard</a>
+      <a href="rewards.html" class="nav-button">Rewards</a>
+      <a href="exchange.html" class="nav-button disabled">Exchange</a>
+      <a href="admin.html" class="nav-button">Admin</a>
+      <a href="help.html" class="nav-button">Help</a>
     </nav>
 
-    <section class="card">
-      <h2>Exchange Plastic Credits</h2>
-      <input type="number" id="plastic-input" placeholder="Plastic credits (kg)" min="0" step="0.01" />
-      <button id="plastic-exchange-btn">Exchange for TUC</button>
-    </section>
-
-    <section class="card">
-      <h2>Exchange Solar Credits</h2>
-      <input type="number" id="solar-input" placeholder="Solar credits (kWh)" min="0" step="0.01" />
-      <button id="solar-exchange-btn">Exchange for TUC</button>
-    </section>
+    <main>
+      <div class="card">
+        <h2>Exchange Credits</h2>
+        <p>Convert your plastic or solar credits into TUC tokens.</p>
+        <input type="number" id="exchange-amount" placeholder="Amount of credits" />
+        <button id="exchange-button">Exchange</button>
+      </div>
+    </main>
 
     <footer>
-      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
+      <button id="lang-toggle" class="footer-button">ES</button>
+      <button id="mode-toggle" class="footer-button">🌙</button>
     </footer>
   </div>
-  <script type="module" src="app.js"></script>
-  <div id="modal">
-    <div id="modal-content">
-      <p id="modal-message">This is a message</p>
-      <button id="modal-close">OK</button>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button id="modal-close">Close</button>
     </div>
   </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

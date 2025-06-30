@@ -12,8 +12,8 @@
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
       <div class="header-controls">
-        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
-        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+        <button id="lang-toggle">ES</button>
+        <button id="mode-toggle">🌙</button>
       </div>
     </header>
 
@@ -24,24 +24,14 @@
       <a href="admin.html"><button>Admin</button></a>
     </nav>
 
-    <section class="card" role="region" aria-labelledby="wallet-title">
-      <h2 id="wallet-title">Your Wallet</h2>
+    <section class="card">
+      <h2>Your Wallet</h2>
       <p><strong>Address:</strong> <span id="user-address">Connecting...</span></p>
     </section>
 
-    <section class="card" role="region" aria-labelledby="balance-title">
-      <h2 id="balance-title">TUC Token Balance</h2>
+    <section class="card">
+      <h2>TUC Token Balance</h2>
       <p id="balance">Loading...</p>
-    </section>
-
-    <section class="card" role="region" aria-labelledby="plastic-title">
-      <h2 id="plastic-title">Plastic Credits</h2>
-      <p id="plastic-balance">—</p>
-    </section>
-
-    <section class="card" role="region" aria-labelledby="solar-title">
-      <h2 id="solar-title">Solar Credits</h2>
-      <p id="solar-balance">—</p>
     </section>
 
     <footer>
@@ -49,5 +39,11 @@
     </footer>
   </div>
   <script type="module" src="app.js"></script>
+  <div id="modal">
+    <div id="modal-content">
+      <p id="modal-message">This is a message</p>
+      <button id="modal-close">OK</button>
+    </div>
+  </div>
 </body>
 </html>

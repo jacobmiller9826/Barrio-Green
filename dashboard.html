@@ -12,25 +12,36 @@
       <h1 id="app-title">Barrio Green</h1>
       <p id="app-subtitle">Arizona Community Rewards</p>
       <div class="header-controls">
-        <button id="lang-toggle">ES</button>
-        <button id="mode-toggle">🌙</button>
+        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
       </div>
     </header>
 
     <nav>
-      <a href="index.html"><button>Dashboard</button></a>
+      <a href="dashboard.html"><button disabled style="opacity: 0.6; cursor: default;">Dashboard</button></a>
+      <a href="exchange.html"><button>Exchange Credits</button></a>
       <a href="rewards.html"><button>Rewards</button></a>
       <a href="admin.html"><button>Admin</button></a>
     </nav>
 
-    <section class="card">
-      <h2>Welcome 👋</h2>
-      <p class="address" id="user-address">Loading address...</p>
+    <section class="card" role="region" aria-labelledby="wallet-title">
+      <h2 id="wallet-title">Your Wallet</h2>
+      <p><strong>Address:</strong> <span id="user-address">Connecting...</span></p>
     </section>
 
-    <section class="card">
-      <h3>Your TUC Balance</h3>
+    <section class="card" role="region" aria-labelledby="balance-title">
+      <h2 id="balance-title">TUC Token Balance</h2>
       <p id="balance">Loading...</p>
+    </section>
+
+    <section class="card" role="region" aria-labelledby="plastic-title">
+      <h2 id="plastic-title">Plastic Credits</h2>
+      <p id="plastic-balance">—</p>
+    </section>
+
+    <section class="card" role="region" aria-labelledby="solar-title">
+      <h2 id="solar-title">Solar Credits</h2>
+      <p id="solar-balance">—</p>
     </section>
 
     <footer>

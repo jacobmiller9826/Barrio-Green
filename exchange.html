@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barrio Green – Exchange Credits</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1 id="app-title">Barrio Green</h1>
+      <p id="app-subtitle">Arizona Community Rewards</p>
+      <div class="header-controls">
+        <button id="lang-toggle" aria-label="Toggle Language">ES</button>
+        <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+      </div>
+    </header>
+
+    <nav>
+      <a href="dashboard.html"><button>Dashboard</button></a>
+      <a href="exchange.html"><button disabled style="opacity: 0.6; cursor: default;">Exchange Credits</button></a>
+      <a href="rewards.html"><button>Rewards</button></a>
+      <a href="admin.html"><button>Admin</button></a>
+    </nav>
+
+    <section class="card" role="region" aria-labelledby="plastic-exchange-title">
+      <h2 id="plastic-exchange-title">Exchange Plastic Credits</h2>
+      <input
+        type="number"
+        id="plastic-input"
+        placeholder="Enter plastic credits (kg)"
+        min="0"
+        step="0.01"
+        aria-label="Plastic credits amount"
+      />
+      <button id="plastic-exchange-btn" class="exchange-btn">Exchange for TUC</button>
+      <p id="plastic-status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" role="region" aria-labelledby="solar-exchange-title">
+      <h2 id="solar-exchange-title">Exchange Solar Credits</h2>
+      <input
+        type="number"
+        id="solar-input"
+        placeholder="Enter solar credits (kWh)"
+        min="0"
+        step="0.01"
+        aria-label="Solar credits amount"
+      />
+      <button id="solar-exchange-btn" class="exchange-btn">Exchange for TUC</button>
+      <p id="solar-status" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Barrio Green – Made in Arizona 🌵</p>
+    </footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
